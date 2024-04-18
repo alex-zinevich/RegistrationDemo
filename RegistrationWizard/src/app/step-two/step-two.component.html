@@ -1,0 +1,34 @@
+<h4>Step 2</h4>
+<form>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Country</label>
+    <div class="col-sm-6">
+      <select id="inputCountry" [ngClass]="{'is-invalid': isCountryTouched && !locationDetails.countryId}" required name="countries"
+              [(ngModel)]="locationDetails.countryId" #inputCountry (change)='onCountrySelected(inputCountry.value)' class="form-control"
+              (blur)="onCountryTouched()">
+        <option *ngFor="let c of countries" [ngValue]="c.id">
+          {{ c.name }}
+        </option>
+      </select>
+      <div *ngIf="isCountryTouched && !locationDetails.countryId" class="invalid-feedback">Country is a required field</div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Province</label>
+    <div class="col-sm-6">
+      <select id="inputProvince" [ngClass]="{'is-invalid': isProvinceTouched && !locationDetails.provinceId}" required name="provinces"
+              [(ngModel)]="locationDetails.provinceId" class="form-control" (blur)="onProvinceTouched()">
+        <option *ngFor="let p of provinces" [ngValue]="p.id">
+          {{ p.name }}
+        </option>
+      </select>
+      <div *ngIf="isProvinceTouched && !locationDetails.provinceId" class="invalid-feedback">Province is a required field</div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-6">
+      <button class="btn btn-primary" type="button" (click)="save()">Save</button>
+    </div>
+  </div>
+</form>

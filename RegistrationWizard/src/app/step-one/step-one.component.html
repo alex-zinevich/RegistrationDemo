@@ -1,0 +1,43 @@
+<h4>Step 1</h4>
+<form [formGroup]="step1Form" (ngSubmit)="onNext()">
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Login</label>
+    <div class="col-sm-6">
+      <input class="form-control" [ngClass]="{'is-invalid': formControls.email.invalid && (formControls.email.dirty || formControls.email.touched)}" type="email" formControlName="email">
+      <div class="invalid-feedback" *ngIf="formControls.email.invalid && (formControls.email.dirty || formControls.email.touched)">Login must be a valid email</div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Password</label>
+    <div class="col-sm-6">
+      <input class="form-control" [ngClass]="{'is-invalid': formControls.password.invalid && (formControls.password.dirty || formControls.password.touched)}" type="password" formControlName="password">
+      <div class="invalid-feedback" *ngIf="formControls.password.invalid && (formControls.password.dirty || formControls.password.touched)">Password must contain min 1 digit and min 1 uppercase letter</div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Confirm password</label>
+    <div class="col-sm-6">
+      <input class="form-control" [ngClass]="{'is-invalid': formControls.confirmPassword.invalid && (formControls.confirmPassword.dirty || formControls.confirmPassword.touched)}" type="password" formControlName="confirmPassword">
+      <div class="invalid-feedback" *ngIf="formControls.confirmPassword.invalid && (formControls.confirmPassword.dirty || formControls.confirmPassword.touched)">Confirm password must be the same with password</div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-6">
+      <div class="form-check">
+        <input class="form-check-input" [ngClass]="{'is-invalid': formControls.agree.invalid && (formControls.agree.dirty || formControls.agree.touched)}" type="checkbox" id="agreeCheckbox" formControlName="agree">
+        <label class="form-check-label" for="agreeCheckbox" >
+          I agree
+        </label>
+        <div class="invalid-feedback" *ngIf="formControls.agree.invalid && (formControls.agree.dirty || formControls.agree.touched)">You must agree</div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-6">
+      <button class="btn btn-primary" type="button" (click)="onNext()">Next</button>
+    </div>
+  </div>
+</form>
+
